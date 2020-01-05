@@ -29,7 +29,7 @@ The first step in our plan is to configure the train stations to emit some of th
 To accomplish this, you must complete the following tasks:
 
 1. Complete the code in `producers/models/producer.py`
-1. Define a `value` schema for the arrival event in `producers/models/schemas/arrival_value.json` with the following attributes
+2. Define a `value` schema for the arrival event in `producers/models/schemas/arrival_value.json` with the following attributes
 	* `station_id`
 	* `train_id`
 	* `direction`
@@ -37,15 +37,15 @@ To accomplish this, you must complete the following tasks:
 	* `train_status`
 	* `prev_station_id`
 	* `prev_direction`
-1. Complete the code in `producers/models/station.py` so that:
+3. Complete the code in `producers/models/station.py` so that:
 	* A topic is created for each station in Kafka to track the arrival events
 	* The station emits an `arrival` event to Kafka whenever the `Station.run()` function is called.
 	* Ensure that events emitted to kafka are paired with the Avro `key` and `value` schemas
-1. Define a `value` schema for the turnstile event in `producers/models/schemas/turnstile_value.json` with the following attributes
+4. Define a `value` schema for the turnstile event in `producers/models/schemas/turnstile_value.json` with the following attributes
 	* `station_id`
 	* `station_name`
 	* `line`
-1. Complete the code in `producers/models/turnstile.py` so that:
+5. Complete the code in `producers/models/turnstile.py` so that:
 	* A topic is created for each turnstile for each station in Kafka to track the turnstile events
 	* The station emits a `turnstile` event to Kafka whenever the `Turnstile.run()` function is called.
 	* Ensure that events emitted to kafka are paired with the Avro `key` and `value` schemas
@@ -80,7 +80,7 @@ We will leverage Faust Stream Processing to transform the raw Stations table tha
 
 To accomplish this, you must complete the following tasks:
 
-1. Complete the code and configuration in `consumers/faust_stream.py
+1. Complete the code and configuration in `consumers/faust_stream.py`
 
 #### Watch Out!
 
@@ -108,9 +108,9 @@ With all of the data in Kafka, our final task is to consume the data in the web 
 To accomplish this, you must complete the following tasks:
 
 1. Complete the code in `consumers/consumer.py`
-1. Complete the code in `consumers/models/line.py`
-1. Complete the code in `consumers/models/weather.py`
-1. Complete the code in `consumers/models/station.py`
+2. Complete the code in `consumers/models/line.py`
+3. Complete the code in `consumers/models/weather.py`
+4. Complete the code in `consumers/models/station.py`
 
 ### Documentation
 In addition to the course content you have already reviewed, you may find the following examples and documentation helpful in completing this assignment:
