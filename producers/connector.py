@@ -20,7 +20,6 @@ def configure_connector():
         logging.debug("connector already created skipping recreation")
         return
 
-    logger.info("connector code not completed skipping connector creation")
     resp = requests.post(
         KAFKA_CONNECT_URL,
         headers={"Content-Type": "application/json"},
@@ -33,15 +32,15 @@ def configure_connector():
                     "key.converter.schemas.enable": "false",
                     "value.converter": "org.apache.kafka.connect.json.JsonConverter",
                     "value.converter.schemas.enable": "false",
-                    "batch.max.rows": "500",
                     "connection.url": "jdbc:postgresql://postgres:5432/cta",
                     "connection.user": "cta_admin",
                     "connection.password": "chicago",
                     "table.whitelist": "stations",
                     "mode": "incrementing",
                     "incrementing.column.name": "stop_id",
-                    "topic.prefix": "stations.",
-                    "poll.interval.ms": "60000",  # every minute
+                    "topic.prefix": "org.chicago.cta.",
+                    "poll.interval.ms": "900000",  # every 15 minutes
+                    "batch.max.rows": "500",
                 },
             }
         ),
