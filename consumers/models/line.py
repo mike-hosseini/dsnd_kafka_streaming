@@ -4,7 +4,6 @@ import logging
 
 from models import Station
 
-
 logger = logging.getLogger(__name__)
 
 

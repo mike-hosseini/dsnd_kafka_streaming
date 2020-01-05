@@ -44,15 +44,11 @@ class Weather(Producer):
             self.temp = 85.0
 
         if Weather.key_schema is None:
-            with open(
-                f"{Path(__file__).parents[0]}/schemas/weather_key.json"
-            ) as f:
+            with open(f"{Path(__file__).parents[0]}/schemas/weather_key.json") as f:
                 Weather.key_schema = json.load(f)
 
         if Weather.value_schema is None:
-            with open(
-                f"{Path(__file__).parents[0]}/schemas/weather_value.json"
-            ) as f:
+            with open(f"{Path(__file__).parents[0]}/schemas/weather_value.json") as f:
                 Weather.value_schema = json.load(f)
 
     def _set_weather(self, month):
@@ -62,9 +58,7 @@ class Weather(Producer):
             mode = -1.0
         elif month in Weather.summer_months:
             mode = 1.0
-        self.temp += min(
-            max(-20.0, random.triangular(-10.0, 10.0, mode)), 100.0
-        )
+        self.temp += min(max(-20.0, random.triangular(-10.0, 10.0, mode)), 100.0)
         self.status = random.choice(list(Weather.status))
 
     def run(self, month):

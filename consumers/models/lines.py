@@ -4,7 +4,6 @@ import logging
 
 from models import Line
 
-
 logger = logging.getLogger(__name__)
 
 

@@ -1,7 +1,6 @@
 """Contains functionality related to Weather"""
 import logging
 
-
 logger = logging.getLogger(__name__)
 
 
